@@ -1,0 +1,3 @@
+G:/.School/Year-2/Semester-1/PROG-2100/Assignments/Assignment2/cli-atm-machine/cmake-build-debug/CMakeFiles/cli_atm_machine.dir
+G:/.School/Year-2/Semester-1/PROG-2100/Assignments/Assignment2/cli-atm-machine/cmake-build-debug/CMakeFiles/edit_cache.dir
+G:/.School/Year-2/Semester-1/PROG-2100/Assignments/Assignment2/cli-atm-machine/cmake-build-debug/CMakeFiles/rebuild_cache.dir

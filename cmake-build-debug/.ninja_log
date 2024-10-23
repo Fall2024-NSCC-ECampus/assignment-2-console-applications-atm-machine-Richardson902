@@ -1,0 +1,4 @@
+# ninja log v6
+14	432	7514161681566286	CMakeFiles/cli_atm_machine.dir/Account.cpp.obj	c5f5b3126402193e
+2	587	7514161681456268	CMakeFiles/cli_atm_machine.dir/main.cpp.obj	979e180b52544198
+587	704	7514161687297572	cli_atm_machine.exe	208939d165de6b47
