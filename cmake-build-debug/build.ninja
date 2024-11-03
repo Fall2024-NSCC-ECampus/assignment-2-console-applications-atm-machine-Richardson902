@@ -61,6 +61,18 @@ build CMakeFiles/cli_atm_machine.dir/Account.cpp.obj: CXX_COMPILER__cli_atm_mach
   OBJECT_DIR = CMakeFiles\cli_atm_machine.dir
   OBJECT_FILE_DIR = CMakeFiles\cli_atm_machine.dir
 
+build CMakeFiles/cli_atm_machine.dir/AccountManager.cpp.obj: CXX_COMPILER__cli_atm_machine_unscanned_Debug G$:/.School/Year-2/Semester-1/PROG-2100/Assignments/Assignment2/cli-atm-machine/AccountManager.cpp || cmake_object_order_depends_target_cli_atm_machine
+  DEP_FILE = CMakeFiles\cli_atm_machine.dir\AccountManager.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\cli_atm_machine.dir
+  OBJECT_FILE_DIR = CMakeFiles\cli_atm_machine.dir
+
+build CMakeFiles/cli_atm_machine.dir/Atm.cpp.obj: CXX_COMPILER__cli_atm_machine_unscanned_Debug G$:/.School/Year-2/Semester-1/PROG-2100/Assignments/Assignment2/cli-atm-machine/Atm.cpp || cmake_object_order_depends_target_cli_atm_machine
+  DEP_FILE = CMakeFiles\cli_atm_machine.dir\Atm.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\cli_atm_machine.dir
+  OBJECT_FILE_DIR = CMakeFiles\cli_atm_machine.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cli_atm_machine
@@ -69,7 +81,7 @@ build CMakeFiles/cli_atm_machine.dir/Account.cpp.obj: CXX_COMPILER__cli_atm_mach
 #############################################
 # Link the executable cli_atm_machine.exe
 
-build cli_atm_machine.exe: CXX_EXECUTABLE_LINKER__cli_atm_machine_Debug CMakeFiles/cli_atm_machine.dir/main.cpp.obj CMakeFiles/cli_atm_machine.dir/Account.cpp.obj
+build cli_atm_machine.exe: CXX_EXECUTABLE_LINKER__cli_atm_machine_Debug CMakeFiles/cli_atm_machine.dir/main.cpp.obj CMakeFiles/cli_atm_machine.dir/Account.cpp.obj CMakeFiles/cli_atm_machine.dir/AccountManager.cpp.obj CMakeFiles/cli_atm_machine.dir/Atm.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\cli_atm_machine.dir

@@ -7,8 +7,6 @@
 
 #include <string>
 
-
-
 class Account {
 
 private:
@@ -27,7 +25,5 @@ public:
     void setPassword(std::string password);
     void setBalance(double balance);
 };
-
-
 
 #endif //ACCOUNT_H
