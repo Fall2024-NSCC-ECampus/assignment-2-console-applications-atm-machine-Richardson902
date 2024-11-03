@@ -20,16 +20,23 @@ void AccountManager::login() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     std::cout << std::endl;
 
-    for (auto& account : accounts) {
-      if(account.getUsername() == username && account.getPassword() == password) {
-        std::cout << "Access Granted!" << std::endl;
-        currentAccount = &account; // Set current account to the account that was found
-        atm.mainMenu();
-        return;
+    try
+    {
+        for (auto& account : accounts) {
+          if(account.getUsername() == username && account.getPassword() == password) {
+            std::cout << "Access Granted!" << std::endl;
+            currentAccount = &account; // Set current account to the account that was found
+            atm.mainMenu();
+            return;
+        }
       }
+    throw std::runtime_error("LOGIN FAILED!");
     }
-    std::cout << "******** LOGIN FAILED! ********" << std::endl;
-    std::cout << std::endl;
+    catch (const std::runtime_error& e)
+    {
+        std::cout << "******** " << e.what() << " ********" << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 void AccountManager::logout()
@@ -49,20 +56,27 @@ void AccountManager::createAccount() {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
     std::cout << std::endl;
 
-    for (auto& account : accounts)
+    try
     {
-        if (account.getUsername() == username)
+        for (auto& account : accounts)
         {
-            std::cout << "Username already exists. Please choose a different username." << std::endl;
-            std::cout << std::endl;
-            return;
+            if (account.getUsername() == username)
+            {
+                throw std::runtime_error("Username already exists. Please choose a different username.");
+            }
         }
+
+        Account newAccount(username, password);
+        accounts.push_back(newAccount);
+        std::cout << "Thank you! Your account has been created!" << std::endl;
+        std::cout << std::endl;
+    }
+    catch (const std::runtime_error& e)
+    {
+        std::cout << e.what()<< std::endl;
+        std::cout << std::endl;
     }
 
-    Account newAccount(username, password);
-    accounts.push_back(newAccount);
-    std::cout << "Thank you! Your account has been created!" << std::endl;
-    std::cout << std::endl;
 }
 
 
