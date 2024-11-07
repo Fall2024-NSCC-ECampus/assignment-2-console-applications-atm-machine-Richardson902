@@ -41,9 +41,15 @@ void AccountManager::login() {
 
 void AccountManager::logout()
 {
-    currentAccount = nullptr;
-    std::cout << "You have been logged out." << std::endl;
-    std::cout << std::endl;
+    if (currentAccount)
+    {
+        currentAccount = nullptr;
+        std::cout << "You have been logged out." << std::endl;
+        std::cout << std::endl;
+    } else
+    {
+        throw std::runtime_error("No account currently logged in.");
+    }
 }
 
 void AccountManager::createAccount() {

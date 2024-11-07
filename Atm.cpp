@@ -36,23 +36,29 @@ void Atm::start() {
         menuInput = tolower(menuInput);
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); // clears the input buffer to prevent multiple inputs
 
-        switch (menuInput)
+        try
         {
-            case 'l':
-                accountManager.login();
-                break;
-            case 'x':
-                accountManager.logout();
-                break;
-            case 'c':
-                accountManager.createAccount();
-                break;
-            case 'q':
-                std::cout << "Quitting the application..." << std::endl;
-                exit(0);
-            default:
-                std::cout << "Invalid input. Please try again." << std::endl;
-                std::cout << std::endl;
+            switch (menuInput)
+            {
+                case 'l':
+                    accountManager.login();
+                    break;
+                case 'x':
+                    accountManager.logout();
+                    break;
+                case 'c':
+                    accountManager.createAccount();
+                    break;
+                case 'q':
+                    std::cout << "Quitting the application..." << std::endl;
+                    exit(0);
+                default:
+                    std::cout << "Invalid input. Please try again." << std::endl;
+                    std::cout << std::endl;
+            }
+        } catch (const std::exception& e)
+        {
+            std::cout << "Error: " << e.what() << std::endl;
         }
     }
 }
@@ -66,27 +72,33 @@ void Atm::mainMenu()
         menuInput = tolower(menuInput);
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 
-        switch (menuInput)
+        try
         {
-        case 'd':
-            updateBalance(getValidInput("How much would you like to deposit?"), true);
-            break;
-        case 'w':
-            updateBalance(getValidInput("How much would you like to withdraw?"), false);
-            break;
-        case 'r':
-            requestBalance();
-            break;
-        case 'b':
-            std::cout << std::endl;
-            start();
-            break;
-        case 'q':
-            std::cout << "Quitting the application..." << std::endl;
-            exit(0);
-        default:
-            std::cout << "Invalid input. Please try again." << std::endl;
-            std::cout << std::endl;
+            switch (menuInput)
+            {
+            case 'd':
+                updateBalance(getValidInput("How much would you like to deposit?"), true);
+                break;
+            case 'w':
+                updateBalance(getValidInput("How much would you like to withdraw?"), false);
+                break;
+            case 'r':
+                requestBalance();
+                break;
+            case 'b':
+                std::cout << std::endl;
+                start();
+                break;
+            case 'q':
+                std::cout << "Quitting the application..." << std::endl;
+                exit(0);
+            default:
+                std::cout << "Invalid input. Please try again." << std::endl;
+                std::cout << std::endl;
+            }
+        } catch (const std::exception& e)
+        {
+            std::cout << "Error: " << e.what() << std::endl;
         }
     }
 }
@@ -100,8 +112,7 @@ void Atm::requestBalance()
         std::cout << std::endl;
     } else
     {
-        std::cout << "Error: No account currently logged in." << std::endl;
-        std::cout << std::endl;
+        throw std::runtime_error("Error: No account currently logged in.");
     }
 }
 
@@ -112,9 +123,7 @@ void Atm::updateBalance(float amount, bool isDeposit)
         double newBalance = isDeposit ? account->getBalance() + amount : account->getBalance() - amount;
         if (!isDeposit && !sufficientFunds(amount))
         {
-            std::cout << "Error: Insufficient funds." << std::endl;
-            std::cout << std::endl;
-            return;
+            throw std::runtime_error("Insufficient funds.");
         }
         account->setBalance(newBalance);
         std::cout << std::fixed << std::setprecision(2);
@@ -122,8 +131,7 @@ void Atm::updateBalance(float amount, bool isDeposit)
         std::cout << std::endl;
     } else
     {
-        std::cout << "Error: No account currently logged in." << std::endl;
-        std::cout << std::endl;
+        throw std::runtime_error("No account currently logged in.");
     }
 }
 
